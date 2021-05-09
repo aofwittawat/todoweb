@@ -1,0 +1,24 @@
+{% extends 'task/layout.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1>{{myproject}}</h1>
+            <br>
+        
+            {% for pj in projectlist %}
+
+                <h3>{{pj.project_name}}<br></h3>
+                <p>({{pj.project_desc}})<br></p>
+
+                <p>
+                    {% for t in pj.alltask %}
+                        <>>>>>>{{t.task_name}}<br>
+                    
+                    {% endfor %}
+                </p>
+                <hr>
+            {% endfor %}
+        
+
+    </div>
+{% endblock %}
