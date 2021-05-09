@@ -1,0 +1,40 @@
+{% extends 'task/layout.html' %}
+{% block title %}
+    <title>ToDoWeb | ลงทะเบียน</title>
+{% endblock title %}
+
+{% block content %}
+    <center>
+        {% if alert %}
+        <p>>>>>{{alert}}<<<<<</p>
+      {% endif %}
+      <h2 class="mt-5">เพิ่มโครงการ</h2>
+      <hr>
+        <div class="container mt-4 ">
+            <form method="POST">
+              {% csrf_token %}
+
+                <div class="form-group">
+                    <label for="projectid">เลือกโครงการ:</label>
+                    <select class="form-control" id="projectid" name="projectid">
+                        {% for pj in allproject%}
+                      <option value ={{pj.id}}>{{pj.project_name}}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="task_name">รายการ task:</label>
+                  <input type="text" class="form-control" id="task_name" name="task_name">
+                </div>
+              
+                <div class="form-group">
+                  <label for="task_desc">คำอธิบาย task:</label>
+                  <textarea class="form-control" rows="5" id="task_desc" name="task_desc"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">เพิ่ม task</button>
+              </form>
+         
+        </div>
+    </center>
+{% endblock %}

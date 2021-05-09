@@ -1,0 +1,31 @@
+{% extends 'task/layout.html' %}
+{% block title %}
+    <title>ToDoWeb | ลงทะเบียน</title>
+{% endblock title %}
+
+{% block content %}
+    <center>
+     
+      <h2 class="mt-5">เพิ่มโครงการ</h2>
+      <hr>
+        <div class="container mt-4 ">
+            <form method="POST">
+              {% csrf_token %}
+                <div class="form-group">
+                  <label for="project_name">ชื่อโครงการ:</label>
+                  <input type="text" class="form-control" id="project_name" name="project_name">
+                </div>
+              {% if alert %}
+                <p>>>>>{{alert}}<<<<<</p>
+              {% endif %}
+                <div class="form-group">
+                  <label for="project_desc">บรรยาย:</label>
+                  <textarea class="form-control" rows="5" id="project_desc" name="project_desc"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-success">เพิ่มโครงการ</button>
+              </form>
+         
+        </div>
+    </center>
+{% endblock %}
